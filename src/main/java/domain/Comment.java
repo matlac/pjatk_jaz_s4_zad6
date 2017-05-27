@@ -1,11 +1,19 @@
 package domain;
 
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
-public class Comment {
+@XmlRootElement
+@Entity
+public class Comment  {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int movie_id;
     private String text;
+
+    @ManyToOne
+    private Movie movie;
 
     public int getId() {
         return id;
@@ -13,14 +21,6 @@ public class Comment {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getMovie_id() {
-        return movie_id;
-    }
-
-    public void setMovie_id(int movie_id) {
-        this.movie_id = movie_id;
     }
 
     public String getText() {
@@ -31,6 +31,12 @@ public class Comment {
         this.text = text;
     }
 
+    public Movie getMovie() {
+        return movie;
+    }
 
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
 
 }

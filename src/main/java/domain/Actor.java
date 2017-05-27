@@ -1,10 +1,26 @@
 package domain;
 
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import java.util.ArrayList;
+import java.util.List;
+
+@XmlRootElement
+@Entity
+@NamedQueries({
+        @NamedQuery(name = "actor.all", query="SELECT a FROM Actor a"),
+        @NamedQuery(name = "actor.id", query="FROM Actor a WHERE a.id=:actorId"),
+})
 public class Actor {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String gender;
+
+    private List<Movie> movies = new ArrayList<Movie>();
 
     public int getId() {
         return id;
@@ -28,5 +44,15 @@ public class Actor {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    @XmlTransient
+    @ManyToMany(targetEntity=Movie.class, mappedBy="actors")
+    public List<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
     }
 }

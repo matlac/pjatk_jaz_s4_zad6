@@ -11,10 +11,10 @@
         <jta-data-source>jdbc/demoapps</jta-data-source>
 
         <properties>
-            <property name="hibernate.hbm2ddl.auto" value=mvn "create-drop"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.transaction.flush_before_completion"
-                      value = "true" />
+                      value="true" />
 
             <property name = "eclipselink.ddl-generation" value="drop-and-create-tables" />
             <property name = "eclipselink.logging.level" value="FINE" />
