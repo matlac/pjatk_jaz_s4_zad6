@@ -1,103 +1,77 @@
-### pjatk_jaz_s4_zad5
-### API Restowe dla serwisu filmowego
+### pjatk_jaz_s4_zad6
+### API Restowe dla sklepu komputerowego
 
 ---
 
-##### Pobieranie filmów
-```GET /rest/movie```
+##### Pobieranie produktów
+```GET /rest/product```
 
-##### Pobranie konkretnego filmu
-```GET /rest/movie/{id}```
+##### Pobranie konkretnego produktu
+```GET /rest/product/{id}```
 
-##### Dodawanie filmu
+##### Dodawanie produktu
 ```
-POST /rest/movie
+POST /rest/product
 {
-	"name": "test2",
-	"premiere_date": "20.05.2017",
+	"name": "komputer",
 	"description": "opis",
-	"genre": "akcja"
+	"amount": 2230,
+	"category": "Ram"
 }
 ```
 
-#### Aktualizowanie informacji o filmie
+#### Aktualizowanie informacji o produkcie
 ```
-PUT /rest/movie
+PUT /rest/product
 {
-	"name": "test2",
-	"premiere_date": "20.05.2017",
+	"name": "komputer",
 	"description": "opis",
-	"genre": "akcja"
+	"amount": 2230,
+	"category": "Ram"
 }
 ```
 
-#### Pobranie komentarzy danego filmu
-``` GET /rest/movie/{id}/comments ```
+---
+
+### KOMENTARZE
+
+##### Pobieranie komentarzy
+```GET /rest/comment```
+
+##### Pobranie konkretnego komentarza
+```GET /rest/comment/{id}```
+
+##### Usunięcie konkretnego komentarza
+```DELETE /rest/comment/{id}```
+
+#### Pobranie komentarzy danego produktu
+``` GET /rest/product/{id}/comments ```
 
 #### Usunięcie danego komentarza
-``` DELETE /rest/movie/{id}/comments/{id} ```
+``` DELETE /rest/product/{id}/comments/{id} ```
 
 #### Dodanie komentarza
 ``` 
-POST /rest/movie/{id}/comment
+POST /rest/product/{id}/comment
 {
 	"text": "comment"
 }
 ```
 
-#### Pobranie oceny danego filmu
-```GET /rest/movie/{id}/rate```
-
-#### Dodanie oceny do filmu
-```
-POST /rest/movie/{id}/rate
-{
-  "rate": 7
-}
-```
-
 ---
 
-#### AKTORZY
+#### WYSZUKIWANIE
 
 #### Dodanie aktora
 ```
-POST /rest/actors
-{
-	"name": "Mila Kunis",
-	"gender": "m"
-}
+GET /rest/product?{argument=value}&&[...]
+example: /rest/product/search?amount_from=20&name=test
 ```
 
-#### Pobranie aktora
-```GET /rest/actor/{id}```
+#### Dostępne filtry
+amount_from | >, int
+amount_to | >, int
+name | like, string
+category | like, string
 
-#### Pobranie aktorów
-```GET /rest/actor```
-
-#### Dodanie aktora do filmu
-```
-POST /rest/movie/{id}/actors
-{
-	"name": "Mila Kunis",
-	"gender": "m"
-}
-```
-
-#### Przydzielenie filmu do danego aktora
-```
-PUT /rest/actor/{id}/movie/{id}
-{
-	"name": "test2",
-	"premiere_date": "20.05.2017",
-	"description": "opis",
-	"genre": "akcja"
-}
-```
-
-#### Wyświetlenie filmów danego aktora
-```GET /rest/actor/{id}/movies```
-
-#### Wyświetlenie aktorów danego filmu
-``` GET /rest/movie/{id}/actors```
 

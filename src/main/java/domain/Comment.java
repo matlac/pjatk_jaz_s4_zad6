@@ -5,6 +5,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "comment.all", query="SELECT p FROM Comment p"),
+        @NamedQuery(name = "comment.id", query="FROM Comment p WHERE p.id=:commentId"),
+})
 public class Comment  {
 
     @Id
@@ -13,7 +17,7 @@ public class Comment  {
     private String text;
 
     @ManyToOne
-    private Movie movie;
+    private Product product;
 
     public int getId() {
         return id;
@@ -31,12 +35,12 @@ public class Comment  {
         this.text = text;
     }
 
-    public Movie getMovie() {
-        return movie;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setMovie(Movie movie) {
-        this.movie = movie;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
 }
