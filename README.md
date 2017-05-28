@@ -69,9 +69,11 @@ example: /rest/product/search?amount_from=20&name=test
 ```
 
 #### Dostępne filtry
-amount_from | >, int
-amount_to | >, int
-name | like, string
-category | like, string
+| Parametr        | Wartość          |
+| ------------- |:-------------:|
+| amount_from | >, int |
+| amount_to | >, int |
+| name | like, string |
+| category | like, string |
 
 
